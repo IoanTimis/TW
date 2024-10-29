@@ -1,6 +1,10 @@
 const sanitizeHtml = require('sanitize-html');
 const usersBoughtProducts = require('../models/usersBoughtProducts');
 
+const dashboard = (req, res) => {
+};
+
+//Schimba in products ( pagina cu produse)
 const home = async (req, res) => {
   const user_id = req.session.loggedInUser.id;
 
@@ -20,6 +24,7 @@ const home = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
 
 const Boughtproduct = async (req, res) => {
   const user_id = req.session.loggedInUser.id;
