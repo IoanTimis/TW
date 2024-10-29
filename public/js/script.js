@@ -20,4 +20,18 @@ $(document).ready(function() {
         });
     });
 
+    var $form = $('#registerForm');
+
+    $form.on('submit', function(e) {
+        if($form.find('input[name="password"]').val().length < 6) {
+            alert('Parola trebuie sa fie de minim 6 caractere!');
+            return false;
+        }
+        if($form.find('input[name="password"]').val() !== $form.find('input[name="passwordConfirm"]').val()) {
+            alert('Parolele nu coincid!');
+            return false;
+        } else {
+            return true;
+        }
+    });
 });

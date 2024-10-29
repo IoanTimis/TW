@@ -16,6 +16,7 @@ const userSchema = Joi.object({
   name: Joi.string().required().min(3).max(30),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
+  passwordConfirm: Joi.string().valid(Joi.ref('password')).required(),
   type: Joi.string().required()
 });
 
@@ -30,7 +31,7 @@ const registerPost = async (req, res) => {
     const password = await bcrypt.hash(value.password, 8);
     const sanitizedData = {
       name: sanitizeHtml(value.name),
-      email: value.email, 
+      email: sanitizeHtml(value.email), 
       password,
       type: value.type
     };
