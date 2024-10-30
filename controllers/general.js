@@ -1,4 +1,6 @@
+const { name } = require("ejs");
 const Product = require("../models/product");
+const usersBoughtProducts = require("../models/usersBoughtProducts");
 const { Op } = require('sequelize');
 
 const home = (req, res) => {
@@ -36,6 +38,40 @@ const searchResults = async (req, res) => {
   }
 };
 
+const buyProduct = async (req, res) => {
+  const { productId } = req.params;
+  const user_id = req.session.loggedInUser.id;
+
+  try {
+
+    if (user_id === undefined) {
+      //Todo: Vom adauga in cos daca nu este logat
+    } else {
+      const product = await Product.findByPk(productId);
+
+      if (!product) {
+        return res.status(404).send('Product not found');
+      }
+
+      const boughtProduct = await usersBoughtProducts.create({
+        name: product.name,
+        price: product.price,
+        user_id,
+        product_id: productId,
+      });
+
+      if (!boughtProduct) {
+        return res.status(404).send('Product not found');
+      }
+
+      res.status(200).send('Product bought successfully');
+    }
+  } catch (error) {
+    console.error('Error buying product:', error);
+    res.status(500).send('Internal Server Error');
+  }   
+};
+
 
 
 
@@ -43,6 +79,7 @@ module.exports = {
   home,
   about,
   search,
-  searchResults
+  searchResults,
+  buyProduct,
 };
 

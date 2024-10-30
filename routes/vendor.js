@@ -12,9 +12,11 @@ router.get('/dashboard', vendorController.dashboard);
 
 router.get('/products-history', vendorController.productsHistory);
 
+router.get('/my-product/:productId', vendorController.getProduct);
 router.get('/my-products', vendorController.getProducts);
-router.post('/add-product', vendorController.AddProduct);
-router.put('/update-product/:productId', vendorController.updateProduct);
-router.delete('/delete-product/:productId', vendorController.deleteProduct);
+
+router.post('/add/product', vendorController.AddProduct);
+router.put('/edit/product/:productId', vendorController.updateProduct);
+router.delete('/delete/product/:productId', vendorController.deleteProduct);
 
 module.exports = router; 

@@ -25,7 +25,29 @@ const productsHistory = async (req, res) => {
       console.error('Error fetching products:', error);
       res.status(500).send('Internal Server Error');
     }
-  };
+};
+
+const getProduct = async (req, res) => {
+    const {productId} = req.params;
+    const user_id = req.session.loggedInUser.id;
+
+    try {
+        const product = await Product.findOne({
+            where: {
+                id: productId,
+                user_id,
+            },
+        });
+
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+
+        res.json(product);
+    } catch (error) {
+        console.error('Error fetching product:', error);
+    }
+};
 
 const getProducts = async (req, res) => {
     const user_id = req.session.loggedInUser.id;
@@ -46,19 +68,20 @@ const getProducts = async (req, res) => {
         console.error('Error fetching products:', error);
         res.status(500).send('Internal Server Error');
     }
-}
+};
 
 const AddProduct = async (req, res) => {
+    const user_id = req.session.loggedInUser.id;
     const { name, price} = req.body;
+
     sanitizeHtml(name);
-    sanitizeHtml(price);
 
     if (!name || !price) {
         return res.status(400).send('Name and price are required');
     }
 
     try {
-        const newProduct = await Product.create({ name, price, userId: req.session.loggedInUser.id });
+        const newProduct = await Product.create({ name, price, user_id });
 
         if (!newProduct) {
             return res.status(404).send('Error creating product');
@@ -117,6 +140,7 @@ const deleteProduct = async (req, res) => {
 module.exports = {
     dashboard,
     productsHistory,
+    getProduct,
     getProducts,
     AddProduct,
     updateProduct,

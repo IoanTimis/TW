@@ -10,6 +10,5 @@ const userController = require('../controllers/client');
 
 router.get('/dashboard', userController.dashboard);
 router.get('/products-history', userController.productsHistory);
-router.post('/BoughtProduct', userController.Boughtproduct);
 
 module.exports = router; 

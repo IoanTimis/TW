@@ -10,7 +10,7 @@ html, body {
 }
 
 
-.deleteBtn{
+.deleteProductBtn{
   background-color: black;
   color: white;
   position: absolute;
@@ -23,12 +23,12 @@ html, body {
   cursor: pointer;
 }
 
-.deleteBtn:hover{
+.deleteProductBtn:hover{
     background-color: #f44336;
     color: white;
 }
 
-.editBtn{
+.editProductBtn{
   background-color: black;
   color: white;
   position: absolute;
@@ -41,7 +41,7 @@ html, body {
   cursor: pointer;
 }
 
-.editBtn:hover{
+.editProductBtn:hover{
     background-color: #f44336;
     color: white;
 }

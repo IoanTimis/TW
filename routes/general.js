@@ -10,4 +10,6 @@ router.get('/about', generalController.about);
 router.get('/search', generalController.search);
 router.get('/search-results', generalController.searchResults);
 
+router.post('/buy/product/:productId', generalController.buyProduct);
+
 module.exports = router; 
