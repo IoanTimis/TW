@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../../partials/general/head'); %>
+    <title>My Account Dashboard</title>
 </head>
 <body class="container">
 
@@ -9,8 +10,40 @@
         <%- include('../../partials/general/header'); %>
     </header>
 
-    <main>
-        <h1>Bine ai venit!</h1>
+    <main class="my-5">
+        <h1 class="text-center mb-4">My Account Dashboard</h1>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <!-- Card pentru Editare Cont -->
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Editare Cont</h5>
+                        <p class="card-text">Actualizează informațiile contului tău și setările de securitate.</p>
+                        <a href="#" class="btn btn-primary">Editează Contul</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card pentru Istoricul de Cumpărături -->
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Istoricul de Cumpărături</h5>
+                        <p class="card-text">Vizualizează produsele pe care le-ai achiziționat în trecut.</p>
+                        <a href="/account/client/" class="btn btn-primary">Vezi Istoricul</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card pentru Setări de Securitate -->
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Setări de Securitate</h5>
+                        <p class="card-text">Gestionează opțiunile de securitate ale contului tău.</p>
+                        <a href="#" class="btn btn-primary">Setări Securitate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     
     <%- include('../../partials/general/footer'); %>

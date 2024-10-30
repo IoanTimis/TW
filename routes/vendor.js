@@ -8,7 +8,11 @@ router.use([isVendor]);
 
 const vendorController = require('../controllers/vendor');
 
-router.get('/', vendorController.getProducts);
+router.get('/dashboard', vendorController.dashboard);
+
+router.get('/products-history', vendorController.productsHistory);
+
+router.get('/my-products', vendorController.getProducts);
 router.post('/add-product', vendorController.AddProduct);
 router.put('/update-product/:productId', vendorController.updateProduct);
 router.delete('/delete-product/:productId', vendorController.deleteProduct);

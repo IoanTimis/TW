@@ -10,8 +10,12 @@
 </header>
 
 <main>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+    Adauga produs
+  </button>
+
   <div class="jumbotron">
-    <h1>Bine ai venit!</h1>
     <p>Produse: </p>
     <ul id="ulProducts">
       <% products.forEach(function(product) { %>
@@ -24,11 +28,6 @@
       <% }); %>
     </ul>
   </div>
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
-    Adauga produs
-  </button>
 
 <!-- Modal -->
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -91,9 +90,7 @@
   </div>
 </main>
 
-<footer>
-    <%- include('../../partials/general/footer'); %>
-</footer>
+  <%- include('../../partials/general/footer'); %>
 
 </body>
 </html>

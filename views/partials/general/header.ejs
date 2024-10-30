@@ -14,33 +14,29 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/search">Cauta produse</a>
-        <% if (!loggedInUser) { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Inregistreaza-te</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">logheaza-te</a>
-          </li>
-        <% } %>
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cont
           </a>
           <ul class="dropdown-menu">
-            <% if(!loggedInUser || loggedInUser.type !== 'admin') { %>
-              <li><a class="dropdown-item" href="/account">Profil</a></li>
+            <% if(!loggedInUser || loggedInUser.type === 'client') { %>
+              <li><a class="dropdown-item" href="/account/client/dashboard">Profil</a></li>
+            <% } %>
+            <% if(loggedInUser && loggedInUser.type === 'vendor') { %>
+              <li><a class="dropdown-item" href="/account/vendor/dashboard">Profil</a></li>
             <% } %>
             <% if(loggedInUser && loggedInUser.type === 'admin') { %>
               <li><a class="dropdown-item" href="/admin">Admin</a></li>
             <% } %>
+            <% if(loggedInUser) { %>
+              <li><a class="dropdown-item" href="/logout">Iesi din cont</a></li>
+            <% } else { %>
+              <li><a class="dropdown-item" href="/register">Inregistreaza-te</a></li>
+              <li><a class="dropdown-item" href="/login">Logheaza-te</a></li>
+            <% } %>
           </ul>
         </li>
-        <% if (loggedInUser) { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Iesi din cont</a>
-          </li>
-        <% } %>
+      
       </ul>
     </div>
   </div>

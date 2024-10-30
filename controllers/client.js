@@ -2,10 +2,10 @@ const sanitizeHtml = require('sanitize-html');
 const usersBoughtProducts = require('../models/usersBoughtProducts');
 
 const dashboard = (req, res) => {
+  res.render('pages/user/dashboard');
 };
 
-//Schimba in products ( pagina cu produse)
-const home = async (req, res) => {
+const productsHistory = async (req, res) => {
   const user_id = req.session.loggedInUser.id;
 
   try {
@@ -18,7 +18,7 @@ const home = async (req, res) => {
     if (!products) {
       return res.status(404).send('Products not found'); // Nu ai cumparat niciun produs
     }
-    res.render('pages/user/products', {products: products});
+    res.render('pages/user/boughtProducts', {products: products});
   } catch (error) {
     console.error('Error fetching products:', error);
     res.status(500).send('Internal Server Error');
@@ -49,7 +49,8 @@ const Boughtproduct = async (req, res) => {
 };
 
 module.exports = {
-  home,
+  dashboard,
+  productsHistory,
   Boughtproduct
 };
 

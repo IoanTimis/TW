@@ -1,19 +1,47 @@
 const sanitizeHtml = require("sanitize-html");
 const Product = require("../models/product");
+const usersBoughtProducts = require("../models/usersBoughtProducts");
 
-const dashboard = (req, res) => {};
+const dashboard = (req, res) => {
+    res.render('pages/vendor/dashboard');
+};
+
+const productsHistory = async (req, res) => {
+    const user_id = req.session.loggedInUser.id;
+  
+    try {
+      const products = await usersBoughtProducts.findAll({
+        where: {
+          user_id,
+        },
+      });
+  
+      if (!products) {
+        return res.status(404).send('Products not found'); // Nu ai cumparat niciun produs
+      }
+
+      res.render('pages/vendor/boughtProducts', {products: products});
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  };
 
 const getProducts = async (req, res) => {
+    const user_id = req.session.loggedInUser.id;
+
     try {
         const allProducts = await Product.findAll({ 
-          where: { userId: req.session.loggedInUser.id } 
+          where: { 
+            user_id,
+        } 
         });
 
         if (!allProducts) {
             // Nu ai niciun produs
         }
 
-        res.render('pages/vendor/products', { products: allProducts }); 
+        res.render('pages/vendor/myProducts', { products: allProducts }); 
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Internal Server Error');
@@ -87,6 +115,8 @@ const deleteProduct = async (req, res) => {
 };
 
 module.exports = {
+    dashboard,
+    productsHistory,
     getProducts,
     AddProduct,
     updateProduct,

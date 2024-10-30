@@ -20,6 +20,7 @@ $(document).ready(function() {
         });
     });
 
+    //TODO validari front si backend
     var $form = $('#registerForm');
 
     $form.on('submit', function(e) {

@@ -19,7 +19,7 @@ app.use(session({ secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new FileStore,
-    cookie: { maxAge: 3600000,secure: false, httpOnly: true }
+    cookie: { maxAge: 9999999,secure: false, httpOnly: true }
   })
 );
 
@@ -54,7 +54,10 @@ const adminRoutes = require('./routes/admin');
 app.use('/admin', adminRoutes);
 
 const clientRoutes = require('./routes/client');
-app.use('/account',clientRoutes);
+app.use('/account/client',clientRoutes);
+
+const vendorRoutes = require('./routes/vendor');
+app.use('/account/vendor', vendorRoutes);
 
 const authRoutes = require('./routes/auth');
 app.use('/', authRoutes);
