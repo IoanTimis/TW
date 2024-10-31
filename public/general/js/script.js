@@ -1,42 +1,21 @@
 $(document).ready(function() {
     
-    $('.buyBtn').on('click', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var url = `/buy/product/${id}`;
-        var method = 'POST';
-
-        $.ajax({
-            url: url,
-            method: method,
-            success: function(response) {
-                console.log(response);
-                alert('Produs Cumparat cu succes!');
-            }, 
-            error: function(error) {
-                console.log(error);
-                alert('Produsul nu a putut fi cumparat!');
-            }
-        });
-    });
-
-    //TODO validari front si backend
+    // Register Form Validation -----------------------------------------------------------------------------------------------------
     var $form = $('#registerForm');
 
     $form.on('submit', function(e) {
         if($form.find('input[name="password"]').val().length < 6) {
             alert('Parola trebuie sa fie de minim 6 caractere!');
             return false;
-        }
-        if($form.find('input[name="password"]').val() !== $form.find('input[name="passwordConfirm"]').val()) {
+        }else if($form.find('input[name="password"]').val() !== $form.find('input[name="passwordConfirm"]').val()) {
             alert('Parolele nu coincid!');
             return false;
-        } else {
+        } else  {
             return true;
         }
     });
 
-// vendor -----------------------------------------------------------------------------------------------------
+// vendor CRUD Products -----------------------------------------------------------------------------------------------------
     var $productModal = $('#productModal');
     var $productForm = $('#productForm');
 
@@ -134,6 +113,27 @@ $(document).ready(function() {
     });
 
     // Orders -----------------------------------------------------------------------------------------------------
+    $('.buyBtn').on('click', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var url = `/buy/product/${id}`;
+        var method = 'POST';
+
+        $.ajax({
+            url: url,
+            method: method,
+            success: function(response) {
+                console.log(response);
+                alert('Produs Cumparat cu succes!');
+            }, 
+            error: function(error) {
+                console.log(error);
+                alert('Produsul nu a putut fi cumparat!');
+            }
+        });
+    });
+
+    // Search Products -----------------------------------------------------------------------------------------------------
     $('#ulSearchProducts').on('click', '.buyBtn', function(e) {
         e.preventDefault();
         $.ajax({
@@ -153,6 +153,5 @@ $(document).ready(function() {
             }
         });
     });
-
 });
 

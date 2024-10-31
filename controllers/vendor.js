@@ -70,17 +70,32 @@ const getProducts = async (req, res) => {
     }
 };
 
+const productSchema = Joi.object({
+    name: Joi.string().min(3).max(50).required().messages({
+      "string.empty": "Name is required",
+      "string.min": "Name should have at least 3 characters",
+      "string.max": "Name can have a maximum of 50 characters"
+    }),
+    price: Joi.number().positive().required().messages({
+      "number.base": "Price must be a number",
+      "number.positive": "Price must be a positive number",
+      "any.required": "Price is required"
+    })
+});
+
 const AddProduct = async (req, res) => {
     const user_id = req.session.loggedInUser.id;
     const { name, price} = req.body;
-
     sanitizeHtml(name);
 
-    if (!name || !price) {
-        return res.status(400).send('Name and price are required');
-    }
-
     try {
+        const { error, value } = productSchema.validate(req.body, { abortEarly: false });
+
+        if (error) {
+          const errorMessages = error.details.map(err => err.message);
+          return res.status(400).json({ errors: errorMessages });
+        }
+
         const newProduct = await Product.create({ name, price, user_id });
 
         if (!newProduct) {
@@ -94,14 +109,25 @@ const AddProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
+    const user_id = req.session.loggedInUser.id;
     const {productId} = req.params;
     const {name, price} = req.body;
     sanitizeHtml(name);
-    sanitizeHtml(price);
 
     try {
-        
-        const product = await Product.findByPk(productId);
+        const { error, value } = productSchema.validate(req.body, { abortEarly: false });
+
+        if (error) {
+          const errorMessages = error.details.map(err => err.message);
+          return res.status(400).json({ errors: errorMessages });
+        }
+
+        const product = await Product.findOne({
+            where: {
+                id: productId,
+                user_id,
+            },
+        });
 
         if (!product) {
             return res.status(404).send('Product not found');
@@ -110,6 +136,7 @@ const updateProduct = async (req, res) => {
         product.name = name;
         product.price = price;
         await product.save();
+
         res.send(product);
     } catch (error) {
         console.error('Error updating product:', error);
@@ -119,10 +146,16 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     const {productId} = req.params;
+    const user_id = req.session.loggedInUser.id;
 
     try {
        
-        const product = await Product.findByPk(productId);
+        const product = await Product.findOne({
+            where: {
+                id: productId,
+                user_id,
+            },
+        });
 
         if (!product) {
             return res.status(404).send('Product not found');
