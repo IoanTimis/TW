@@ -1,6 +1,7 @@
 const sanitizeHtml = require("sanitize-html");
 const Product = require("../models/product");
 const usersBoughtProducts = require("../models/usersBoughtProducts");
+const Joi = require("joi");
 
 const dashboard = (req, res) => {
     res.render('pages/vendor/dashboard');
