@@ -63,6 +63,7 @@
             <div class="modal-body">
                 <h6 id="modalMsg"></h6>
                 <form action="" method="" id="Form">
+                  <input type="hidden" name="csrf_token" value="<%= csrf_token %>">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nume</label>
                         <input type="text" class="form-control"  name="name" required>

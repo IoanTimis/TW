@@ -10,6 +10,7 @@
     </header>
     <br>
     <main>
+      <input type="hidden" name="csrf_token" value="<%= csrf_token %>">
       <form action="/search-results" method="GET">
         <div class="form-group">
           <input class="form-control mr-sm-2" name="search" type="search" placeholder="Cauta" aria-label="Search">

@@ -1,6 +1,7 @@
 $(document).ready(function() {
-	form = $('#Form');
-	modal = $('#Modal');
+	var form = $('#Form');
+	var modal = $('#Modal');
+	var csrf_token = $('input[name=csrf_token]').val();
 
 	$(form).on('submit', function(e) {
 		e.preventDefault();
@@ -15,6 +16,7 @@ $(document).ready(function() {
 			url: url,
 			method: method,
 			data: {
+				csrf_token: csrf_token,
 				name: name,
 				price: price,
 			},
@@ -36,6 +38,7 @@ $(document).ready(function() {
 				}			
 				else {
 					let line = $(`tr[data-id=${response.id}]`);
+					//TODO: schimba aceasta medota de selectie a elementelor pt ca este prea sensibila
 					line.find('td:eq(1) span').text(response.name);
 					line.find('td:eq(2) span').text(response.price);
 					alert('Product editat cu succes');
@@ -82,6 +85,9 @@ $(document).ready(function() {
 		$.ajax({
 				url: `/admin/product/delete/${id}`,
 				method: 'DELETE',
+				data: {
+					csrf_token: csrf_token
+				},
 				success: function(response) {
 						tr.remove();
 				}

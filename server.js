@@ -23,12 +23,19 @@ app.use(session({ secret: process.env.SESSION_SECRET,
   })
 );
 
+const check_csrf_token = require('./middlewares/csrfToken').check_csrf_token;
+app.use(check_csrf_token);
+
+const generate_csrf_token = require('./helpers/helper').generate_csrf_token;
+
 app.use((req, res, next) => {
   if (req.session.loggedInUser) {
     res.locals.loggedInUser = req.session.loggedInUser;
   } else {
     res.locals.loggedInUser = null;
   }
+
+  res.locals.csrf_token = generate_csrf_token(req);
   next();
 });
 

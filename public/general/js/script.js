@@ -18,6 +18,7 @@ $(document).ready(function() {
 // vendor CRUD Products -----------------------------------------------------------------------------------------------------
     var $productModal = $('#productModal');
     var $productForm = $('#productForm');
+    var csrf_token = $('input[name="csrf_token"]').val();
 
     $($productForm).on('submit', function(e) {
         e.preventDefault();
@@ -31,6 +32,7 @@ $(document).ready(function() {
             url: url,
             method: method,
             data: {
+                csrf_token: csrf_token,
                 name: name,
                 price: price
             },
@@ -102,6 +104,9 @@ $(document).ready(function() {
         $.ajax({
             url: `/account/vendor/delete/product/${id}`,
             method: 'delete',
+            data: {
+                csrf_token: csrf_token
+            },
             success: function(response) {
                 $(`.ulProducts`).find(`li[data-id="${id}"]`).remove();
                 alert('Produs sters cu succes!');
@@ -122,6 +127,9 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             method: method,
+            data: {
+                csrf_token: csrf_token        
+            },
             success: function(response) {
                 console.log(response);
                 alert('Produs Cumparat cu succes!');
