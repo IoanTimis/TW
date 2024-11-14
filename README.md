@@ -25,8 +25,3 @@ This project is a basic product management system built using **Node.js**, **Exp
 - **HTML/CSS/JavaScript** - For front-end rendering.
 - **Session Management** - To manage user sessions and login states.
 
-## Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/IoanTimis/My-First-Web-Project.git
