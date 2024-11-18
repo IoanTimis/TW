@@ -14,3 +14,6 @@ nginx
 #debugg files
 .vscode/launch.json
 
+#package-lock
+package-lock.json
+
