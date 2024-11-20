@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/general/css/index.css">
     <%- include('../../partials/general/head'); %>
 </head>
-<body class="container">
+<body>
 
     <header>
         <%- include('../../partials/general/header'); %>
     </header>
+    <img class="background-img" src="/images/back-photo-2.jpg" />
+    <main class="container">
 
-    <main>
-        <h1>Bine ai venit!</h1>
+        <img class="logo" src="/images/logo.png" />
+
+        <div class="products-container">
+            <h2>CATEGORII</h2>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div class="product-item" style="background-image: url('/images/FashionBarbati.jpg'); background-size: cover;">
+                    <h2 class="product-title">BARBATI</p>
+                </div>
+
+                <div class="product-item" style="background-image: url('/images/fashionFemei.jpg'); background-size: cover;">
+                    <h2 class="product-title">FEMEI</p>
+                </div>
+            </div>
+        </div>
     </main>
+    <div style="background-color: #5e493a; margin-top: 3rem;">
+        <div class="pre-footer">
+            <p>
+                Livrare gratuita peste 70 de lei
+            </p>
+            <p>
+                Produse Originale
+            </p>
+            <p>
+                100% Siguranta
+            </p>
+            <p>
+                Oferte si promotii
+            </p>
+        </div>
+    </div>
     
     <%- include('../../partials/general/footer'); %>
 

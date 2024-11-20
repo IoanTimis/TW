@@ -1,0 +1,46 @@
+.background-img {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    position: absolute;
+    top: 5rem;
+    left: 2rem;
+    width: 20rem;
+    
+}
+
+.products-container {
+    margin: auto;
+    width: 50%;
+}
+
+.product-item {
+    width: 20rem;
+    height: 25rem;
+    border: 1px solid grey;
+    border-radius: 2%;
+}
+
+.product-item:hover {
+    cursor: pointer;
+}
+
+.product-title {
+    text-align: left;
+    position: relative;
+    top: 19rem;
+    right: -2rem;
+    color: whitesmoke;
+}
+
+.pre-footer{
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    height: 3rem;
+    margin-top: 1.5rem;
+}

@@ -52,7 +52,7 @@ const User = require('./models/user');
 const Product = require('./models/product');
 const userBoughtProduct = require('./models/usersBoughtProducts');
 
-sequelize.sync({ force: false })
+sequelize.sync({ force: false }) //sa nu uit sa trec la false
   .then(() => {
     console.log('Database & tables created!');
 });

@@ -1,49 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../../partials/general/head'); %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Căutare Produse</title>
+  <link rel="stylesheet" href="/general/css/search.css">
 </head>
 <body class="container">
 
-    <header>
-        <%- include('../../partials/general/header'); %>
-    </header>
-    <br>
-    <main>
-      <input type="hidden" name="csrf_token" value="<%= csrf_token %>">
-      <form action="/search-results" method="GET">
+  <header class="header">
+    <div class="logo">
+      <a href="/">Home</a>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Acasă</a></li>
+        <li><a href="/produse">Produse</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="search-section">
+      <h1>Caută Produse</h1>
+      <form action="/search-results" method="GET" class="search-form">
         <div class="form-group">
-          <input class="form-control mr-sm-2" name="search" type="search" placeholder="Cauta" aria-label="Search">
+          <input class="form-control" name="search" type="search" placeholder="Caută un produs..." aria-label="Search">
         </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Pret maxim:</label>
-          </div>
-          <select class="custom-select" id="inputGroupSelect01" name="maxPrice">
-            <option value="empty"></option>
+        <div class="filter-group">
+          <select id="maxPrice" name="maxPrice">
+            <option value="empty">Pret maxim</option>
             <option value="500">500 lei</option>
             <option value="1000">1000 lei</option>
             <option value="1500">1500 lei</option>
           </select>
         </div>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cauta</button>
+        <button type="submit" class="btn btn-search">Caută</button>
       </form>
-      <br>
-      <div class="jumbotron">
-        <p>Produse: </p>
-        <ul>
-          <% products.forEach(function(product) { %>
-            <li class="liProduct">
-              <strong><%= product.name %></strong>,
-              pret: <span><%= product.price %></span>
-              <button class="btn buyBtn" data-id="<%=product.id%>">Cumpara</button>
-            </li>
-          <% }); %>
-        </ul>
-      </div>
-    </main>
+    </section>
 
-    <%- include('../../partials/general/footer'); %>
+    <section class="product-section">
+      <h2>Produse Disponibile</h2>
+      <div class="product-grid">
+        <% products.forEach(function(product) { %>
+          <div class="product-card">
+            <h3><%= product.name %></h3>
+            <p>Preț: <span><%= product.price %></span> lei</p>
+            <button class="btn buy-btn" data-id="<%= product.id %>">Cumpără</button>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Toate drepturile rezervate.</p>
+    <ul class="social-media">
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </footer>
 
 </body>
 </html>

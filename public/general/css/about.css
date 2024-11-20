@@ -1,0 +1,23 @@
+.title {
+    text-align: center;
+    margin-top: 8rem;
+}
+.main{
+    margin: auto;
+    width: 80%;
+}
+
+.image{
+    width: 100%;
+}
+
+.idea_box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 4rem;
+}
+
+.idea_entry{
+    width: 48%;
+}
