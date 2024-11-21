@@ -13,7 +13,7 @@ const productsHistory = async (req, res) => {
     try {
       const products = await usersBoughtProducts.findAll({
         where: {
-          user_id,
+         user_id,
         },
       });
   

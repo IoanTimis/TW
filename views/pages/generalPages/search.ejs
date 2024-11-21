@@ -1,67 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Căutare Produse</title>
-  <link rel="stylesheet" href="/general/css/search.css">
+    <link rel="stylesheet" href="/general/css/search.css">
+    <%- include('../../partials/general/head'); %>
 </head>
-<body class="container">
+<body>
 
-  <header class="header">
-    <div class="logo">
-      <a href="/">Home</a>
+    <header>
+        <%- include('../../partials/general/header'); %>
+    </header>
+
+    <main class="container">
+
+        <div class="search-container">
+            <h1>CAUTĂ PRODUSE</h1>
+
+            <form action="/search-results" method="GET" class="search-form">
+                <div class="form-group">
+                    <input class="form-control" name="search" type="search" placeholder="Caută un produs..." aria-label="Search">
+                </div>
+                <div class="filter-group">
+                    <label for="maxPrice">Preț Maxim:</label>
+                    <select id="maxPrice" name="maxPrice">
+                        <option value="empty">Selectează</option>
+                        <option value="500">500 lei</option>
+                        <option value="1000">1000 lei</option>
+                        <option value="1500">1500 lei</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-search">Caută</button>
+            </form>
+        </div>
+
+        <div class="results-container">
+            <h2>REZULTATE</h2>
+            <div class="results-grid">
+                <% products.forEach(function(product) { %>
+                <div class="product-item" style="background-image: url('<%= product.image %>'); background-size: cover;">
+                    <h3 class="product-title"><%= product.name %></h3>
+                    <p class="product-price"><%= product.price %> lei</p>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+
+    </main>
+
+    <div style="background-color: #5e493a; margin-top: 3rem;">
+        <div class="pre-footer">
+            <p>Livrare gratuită peste 70 de lei</p>
+            <p>Produse Originale</p>
+            <p>100% Siguranță</p>
+            <p>Oferte și promoții</p>
+        </div>
     </div>
-    <nav class="navbar">
-      <ul>
-        <li><a href="/">Acasă</a></li>
-        <li><a href="/produse">Produse</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="main">
-    <section class="search-section">
-      <h1>Caută Produse</h1>
-      <form action="/search-results" method="GET" class="search-form">
-        <div class="form-group">
-          <input class="form-control" name="search" type="search" placeholder="Caută un produs..." aria-label="Search">
-        </div>
-        <div class="filter-group">
-          <select id="maxPrice" name="maxPrice">
-            <option value="empty">Pret maxim</option>
-            <option value="500">500 lei</option>
-            <option value="1000">1000 lei</option>
-            <option value="1500">1500 lei</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-search">Caută</button>
-      </form>
-    </section>
-
-    <section class="product-section">
-      <h2>Produse Disponibile</h2>
-      <div class="product-grid">
-        <% products.forEach(function(product) { %>
-          <div class="product-card">
-            <h3><%= product.name %></h3>
-            <p>Preț: <span><%= product.price %></span> lei</p>
-            <button class="btn buy-btn" data-id="<%= product.id %>">Cumpără</button>
-          </div>
-        <% }); %>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>&copy; Toate drepturile rezervate.</p>
-    <ul class="social-media">
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Twitter</a></li>
-    </ul>
-  </footer>
+    <%- include('../../partials/general/footer'); %>
 
 </body>
 </html>
