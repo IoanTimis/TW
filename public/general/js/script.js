@@ -39,25 +39,24 @@ $(document).ready(function() {
             success: function(response) {
                 if( method === 'POST') {
                 var html = 
-                `<div class="col">
+                `<div class="col" data-id="${ response.id }">
                     <div class="card h-100">
                         <img src="/images/pantof.jpeg" class="card-img-top" alt="Product Image">
                         <div class="card-body text-center">
-                        <h5 class="card-title">${ name }</h5>
-                        <p class="card-text">${ price }</p>
-                        <a href="#" class="btn btn-danger deleteProductBtn" data-id="">Delete</a>
-                        <a href="#" class="btn btn-primary editProductBtn" data-id="">Edit</a>
+                            <h5 class="card-title">${ response.name }</h5>
+                            <p class="card-text">${ response.price }</p>
+                            <a href="#" class="btn btn-danger deleteProductBtn" data-id="${ response.id }">Delete</a>
+                            <a href="#" class="btn btn-primary editProductBtn" data-id="${ response.id }">Edit</a>
                         </div>
                     </div>
                 </div>`;
                 $('.row').append(html);
                 alert('Produs adaugat cu succes!');
                 } else { 
-                    //Todo: Update product in the DOM
-                    // let $li = $(`.row`).find(``);
-                    // $li.find('strong').html(response.name);
-                    // $li.find('span').html(response.price);
-                    // alert('Produs editat cu succes!');
+                    let $col = $(`.row`).find(`.col[data-id="${response.id}"]`);
+                    $col.find('.card-title').html(name).val(response.name);
+                    $col.find('.card-text').html(price).val(response.price);
+                    alert('Produs editat cu succes!');
                 }
                 $productModal.modal('hide');
                 console.log(response);
@@ -106,6 +105,7 @@ $(document).ready(function() {
 
     $('.deleteProductBtn').on('click', function() {
         var id = $(this).data('id');
+        var $col = $(this).closest('.col');
         $.ajax({
             url: `/account/vendor/delete/product/${id}`,
             method: 'delete',
@@ -113,7 +113,7 @@ $(document).ready(function() {
                 csrf_token: csrf_token
             },
             success: function(response) {
-                $(this).closest('.col').remove();
+                $col.remove();
                 alert('Produs sters cu succes!');
             },
             error: function(error) {
