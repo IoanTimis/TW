@@ -12,10 +12,13 @@ This project is a basic product management system built using **Node.js**, **Exp
 ### Seller Account:
 - Sellers can create their own accounts.
 - Sellers can add, edit, and delete their own products.
+- buy products
 
 ### User Account:
-- Users can view a list of products and "buy" products (which adds them to the purchase history).
-- Users can view their purchase history, although no actual cart or purchase functionality is implemented.
+- (both seller and normal users) 
+- Users can view a list of products and buy products (which adds them to the purchase history).
+- Users can add products to cart
+- Users can view their purchase history.
 
 ## Technologies Used
 - **Node.js** - Backend runtime environment.
