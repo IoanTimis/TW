@@ -1,0 +1,82 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f9f6f3, #5e493a); /* Gradient diagonal de la alb la maro */
+    color: #5e493a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.card-container {
+    display: flex;
+    gap: 3rem; /* Gap between cards */
+    justify-content: center;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #e0dedb;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2), 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px; /* Increased card width */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 300px; /* Prevent excessively tall images */
+    display: block;
+    object-fit: contain; /* Ensure the full image is visible within the container */
+}
+
+.card h2 {
+    margin: 1rem 0;
+    font-size: 2rem; /* Larger font for title */
+    color: #5e3e29;
+}
+
+.card a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: #5e3e29;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem auto;
+    width: 80%;
+    text-transform: uppercase;
+    font-size: 1rem; /* Button font size */
+    transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+    background-color: #4b321e;
+}
+

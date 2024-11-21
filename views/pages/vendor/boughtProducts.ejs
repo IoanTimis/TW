@@ -2,28 +2,35 @@
 <html lang="en">
 <head>
     <%- include('../../partials/general/head'); %>
+    <link rel="stylesheet" href="/general/css/boughtProducts.css">
 </head>
-<body class="container">
+<body>
 
 <header>
     <%- include('../../partials/general/header'); %>
 </header>
 
 <main>
-  <div class="jumbotron">
-    <p>Produse: </p>
-    <ul>
-      <% products.forEach(function(product) { %>
-        <li class="liProduct">
-          <strong><%= product.name %></strong>,
-          pret: <span><%= product.price %></span>
-        </li>
-      <% }); %>
-    </ul>
+  <div>
+    <h1>Istoric Comenzi</h1>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% products.forEach(function(product) { %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="/images/pantof.jpeg" class="card-img-top" alt="Product Image">
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text"><%= product.price %></p>
+          </div>
+        </div>
+      </div>
+    <% }); %>
   </div>
 </main>
 
-  <%- include('../../partials/general/footer'); %>
+<%- include('../../partials/general/footer'); %>
 
 </body>
 </html>

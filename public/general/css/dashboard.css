@@ -1,0 +1,66 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f9f6f3, #5e493a); /* Gradient diagonal de la alb la maro */ 
+    color: #5e493a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; 
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    color: #5e3e29; 
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #e0dedb;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2), 0px 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    color: #5e3e29; 
+    font-size: 1.5rem;
+}
+
+.card-text {
+    color: #5e493a;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #5e3e29; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4b321e; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.row-cols-md-2 {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; 
+}

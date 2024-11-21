@@ -6,6 +6,10 @@ const home = (req, res) => {
     res.render('pages/generalPages/index');
 };
 
+const contact = (req, res) => {
+    res.render('pages/generalPages/contact');
+};
+
 const about = (req, res) => {
     res.render('pages/generalPages/about');
 };
@@ -74,6 +78,7 @@ const buyProduct = async (req, res) => {
 module.exports = {
     home,
     about,
+    contact,
     search,
     searchResults,
     buyProduct,

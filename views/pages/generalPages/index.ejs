@@ -2,18 +2,29 @@
 <html lang="en">
 <head>
     <%- include('../../partials/general/head'); %>
+    <link rel="stylesheet" href="/general/css/home.css">
 </head>
-<body class="container">
-
+<body>
     <header>
         <%- include('../../partials/general/header'); %>
     </header>
 
     <main>
-        <h1>Bine ai venit!</h1>
+        <h1>Bine ai venit pe ThriftShop!</h1>
+        <div class="card-container">
+            <div class="card">
+                <img src="/images/vintage-barbati-394.jpeg" alt="Barbati">
+                <h2>Barbati</h2>
+                <a href="/barbati">Exploreaza</a>
+            </div>
+            <div class="card">
+                <img src="/images/haine-vintage-femei-393.jpg" alt="Femei">
+                <h2>Femei</h2>
+                <a href="/femei">Exploreaza</a>
+            </div>
+        </div>
     </main>
     
     <%- include('../../partials/general/footer'); %>
-
 </body>
 </html>

@@ -2,21 +2,31 @@
 <html lang="en">
 <head>
 	<%- include('../../partials/general/head'); %>
+    <link rel="stylesheet" href="/general/css/about.css">
 </head>
-<body class="container">
+<body>
 
-<header>
-	<%- include('../../partials/general/header'); %>
-</header>
+	<header>
+		<%- include('../../partials/general/header'); %>
+	</header>
 
-<main>
-<h1>
-	Despre noi: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam est ligula, pharetra posuere egestas ut, ultricies egestas quam. In hac habitasse platea dictumst.
-</h1>
-</div>
-</main>
+	<main>
+		<h1>Despre Noi</h1>
+		<div class="about-container">
+			<h2>Ce facem noi</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam est ligula, pharetra posuere egestas ut, ultricies egestas quam. In hac habitasse platea dictumst.</p>
+			
+			<h2>Misiunea Noastră</h2>
+			<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec ut ultricies ligula. Praesent ut felis ut nulla varius accumsan. Fusce eget mauris at sapien bibendum fringilla.</p>
+			
+			<h2>Valorile Noastre</h2>
+			<p>Aenean dictum lectus at massa finibus, a interdum neque dictum. Nam vel mi nulla. Suspendisse quis lacus ut libero laoreet laoreet.</p>
 
-<%- include('../../partials/general/footer'); %>
+			<a href="/contact" class="btn-read-more">Contactează-ne</a>
+		</div>
+	</main>
+
+	<%- include('../../partials/general/footer'); %>
 
 </body>
 </html>

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<%- include('../../partials/general/head'); %>
+    <%- include('../../partials/general/head'); %>
+    <link rel="stylesheet" href="/general/css/register-success.css">
 </head>
-<body class="container">
+<body>
 
 <header>
-	<%- include('../../partials/general/header'); %>
+    <%- include('../../partials/general/header'); %>
 </header>
+
 <main>
-	<h2>Buna  <%-user.name%>, te-ai inregistrat cu succes.</h2>
+    <h2>Bună, <%- user.name %>! Te-ai înregistrat cu succes.</h2>
 </main>
 
 <%- include('../../partials/general/footer'); %>
+
 
 </body>
 </html>

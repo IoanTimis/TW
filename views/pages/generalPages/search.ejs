@@ -3,44 +3,47 @@
 <head>
     <%- include('../../partials/general/head'); %>
 </head>
-<body class="container">
+<body>
 
     <header>
         <%- include('../../partials/general/header'); %>
+        <link rel="stylesheet" href="/general/css/search.css">
     </header>
-    <br>
     <main>
-      <input type="hidden" name="csrf_token" value="<%= csrf_token %>">
-      <form action="/search-results" method="GET">
-        <div class="form-group">
-          <input class="form-control mr-sm-2" name="search" type="search" placeholder="Cauta" aria-label="Search">
-        </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Pret maxim:</label>
+      <div class="searchFilterDiv">
+        <input type="hidden" name="csrf_token" value="<%= csrf_token %>">
+        <form action="/search-results" method="GET">
+          <div class="form-group">
+            <input class="form-control mr-sm-2" name="search" type="search" placeholder="Cauta" aria-label="Search">
           </div>
-          <select class="custom-select" id="inputGroupSelect01" name="maxPrice">
-            <option value="empty"></option>
-            <option value="500">500 lei</option>
-            <option value="1000">1000 lei</option>
-            <option value="1500">1500 lei</option>
-          </select>
-        </div>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cauta</button>
-      </form>
-      <br>
-      <div class="jumbotron">
-        <p>Produse: </p>
-        <ul>
-          <% products.forEach(function(product) { %>
-            <li class="liProduct">
-              <strong><%= product.name %></strong>,
-              pret: <span><%= product.price %></span>
-              <button class="btn buyBtn" data-id="<%=product.id%>">Cumpara</button>
-            </li>
-          <% }); %>
-        </ul>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Pret maxim:</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" name="maxPrice">
+              <option value="empty"></option>
+              <option value="500">500 lei</option>
+              <option value="1000">1000 lei</option>
+              <option value="1500">1500 lei</option>
+            </select>
+          </div>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cauta</button>
+        </form>
       </div>
+     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% products.forEach(function(product) { %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="/images/pantof.jpeg" class="card-img-top" alt="Product Image">
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text"><%= product.price %></p>
+            <a href="#" class="btn btn-primary buyBtn" data-id=" <%= product.id %>">Cumpara</a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
     </main>
 
     <%- include('../../partials/general/footer'); %>

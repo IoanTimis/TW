@@ -39,20 +39,25 @@ $(document).ready(function() {
             success: function(response) {
                 if( method === 'POST') {
                 var html = 
-                `<li class="liProduct">
-                    <strong>${response.name}</strong>,
-                    price: <span>${response.price}</span>
-                    !!Recent adaugat!!
-                    <button class="btn editProductBtn" data-toggle="modal" data-target="#editModal" data-id="${response.id}">Edit</button>
-                    <button class="btn deleteProductBtn" data-id="${response.id}">Delete</button>
-                </li>`;
-                $('.ulProducts').append(html);
+                `<div class="col">
+                    <div class="card h-100">
+                        <img src="/images/pantof.jpeg" class="card-img-top" alt="Product Image">
+                        <div class="card-body text-center">
+                        <h5 class="card-title">${ name }</h5>
+                        <p class="card-text">${ price }</p>
+                        <a href="#" class="btn btn-danger deleteProductBtn" data-id="">Delete</a>
+                        <a href="#" class="btn btn-primary editProductBtn" data-id="">Edit</a>
+                        </div>
+                    </div>
+                </div>`;
+                $('.row').append(html);
                 alert('Produs adaugat cu succes!');
                 } else { 
-                    let $li = $(`.ulProducts`).find(`li[data-id="${response.id}"]`);
-                    $li.find('strong').html(response.name);
-                    $li.find('span').html(response.price);
-                    alert('Produs editat cu succes!');
+                    //Todo: Update product in the DOM
+                    // let $li = $(`.row`).find(``);
+                    // $li.find('strong').html(response.name);
+                    // $li.find('span').html(response.price);
+                    // alert('Produs editat cu succes!');
                 }
                 $productModal.modal('hide');
                 console.log(response);
@@ -108,7 +113,7 @@ $(document).ready(function() {
                 csrf_token: csrf_token
             },
             success: function(response) {
-                $(`.ulProducts`).find(`li[data-id="${id}"]`).remove();
+                $(this).closest('.col').remove();
                 alert('Produs sters cu succes!');
             },
             error: function(error) {

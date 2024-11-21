@@ -81,7 +81,8 @@ const productSchema = Joi.object({
       "number.base": "Price must be a number",
       "number.positive": "Price must be a positive number",
       "any.required": "Price is required"
-    })
+    }),
+    csrf_token: Joi.string().required()
 });
 
 const AddProduct = async (req, res) => {
